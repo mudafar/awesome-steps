@@ -8,9 +8,9 @@ export default class App extends Component {
         return (
             <div>
                 <Steps current={1} labelPlacement="vertical" direction="horizontal">
-                    <Steps.Step title="first" description="description"/>
-                    <Steps.Step title="second" description="description"/>
-                    <Steps.Step title="third" description="description"/>
+                    <Steps.Step title="first" description="description" upperTitle="Upper title"/>
+                    <Steps.Step title="second" description="description" upperTitle="Upper title 234"/>
+                    <Steps.Step title="third" description="description" upperTitle="Upper title 3424"/>
                 </Steps>
             </div>
         )

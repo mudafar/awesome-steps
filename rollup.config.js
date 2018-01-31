@@ -31,9 +31,5 @@ export default {
         }),
         resolve(),
         commonjs()
-    ],
-    watch: {
-        exclude: 'node_modules/**',
-        include: 'src/**'
-    }
+    ]
 }

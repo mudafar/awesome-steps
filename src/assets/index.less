@@ -5,7 +5,7 @@
   width: 100%;
   line-height: 1.5;
   display: flex;
-
+  padding-top: 50px;
   &,
   * {
     box-sizing: border-box;
@@ -78,6 +78,36 @@
   &-content {
     margin-top: 3px;
   }
+  &-outer-content {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    width: 100px;
+    position: absolute;
+    top: -50px;
+  }
+  &-outer-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #666;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 10px;
+    position: relative;
+    max-height: 40px;
+    overflow: hidden;
+    &:after {
+      content: '';
+      height: 1px;
+      width: 1000px;
+      background: @wait-tail-color;
+      display: block;
+      position: absolute;
+      top: 0.55em;
+      left: 100%;
+    }
+  }
+
   &-title {
     font-size: 14px;
     margin-bottom: 4px;
