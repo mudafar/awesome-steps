@@ -27,7 +27,16 @@
   &:last-child &-title:after {
     display: none;
   }
-
+  &-sub-step {
+    .@{stepsPrefixClass}-item-icon {
+      font-size: 0;
+      width: 15px;
+      height: 15px;
+      margin-top: 5px;
+    }
+    flex: 1 2;
+    overflow: hidden !important;
+  }
   &-icon,
   &-content {
     display: inline-block;

@@ -23,7 +23,7 @@ export default class Step extends React.Component {
             PropTypes.number,
             PropTypes.string,
         ]),
-        stepNumber: PropTypes.string,
+        stepNumber: PropTypes.number,
         description: PropTypes.any,
         outerTitle: PropTypes.any,
         title: PropTypes.any,
@@ -32,6 +32,7 @@ export default class Step extends React.Component {
             PropTypes.func,
         ]),
         tailContent: PropTypes.any,
+        subStep: PropTypes.bool
     };
 
     renderIconNode() {
@@ -72,7 +73,7 @@ export default class Step extends React.Component {
             className, prefixCls, style, itemWidth,
             status = 'wait', iconPrefix, icon, wrapperStyle,
             adjustMarginRight, stepNumber,
-            description, title, upperTitle: outerTitle, progressDot, tailContent,
+            description, title, upperTitle: outerTitle, progressDot, tailContent, subStep,
             ...restProps,
         } = this.props;
 
@@ -80,7 +81,10 @@ export default class Step extends React.Component {
             `${prefixCls}-item`,
             `${prefixCls}-item-${status}`,
             className,
-            {[`${prefixCls}-item-custom`]: icon},
+            {
+                [`${prefixCls}-item-custom`]: icon,
+                [`${prefixCls}-item-sub-step`]: subStep,
+            },
         );
         const stepItemStyle = {...style};
         if (itemWidth) {
