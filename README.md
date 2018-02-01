@@ -12,6 +12,13 @@ Based on [rc-steps]
 [js-style-url]: https://standardjs.com
 [download-url]: https://npmjs.org/package/awesome-steps
 [rc-steps]: https://github.com/react-component/steps
+
+
+## Example
+Online example: https://mudafar.github.io/awesome-steps/
+
+
+
 ## Install
 
 
@@ -149,13 +156,6 @@ export default class App extends Component {
   </tbody>
 </table>
 
-
-
-## Example
-
-example/src/
-
-online example: http://mudafar.github.io/awesome-steps/examples
 
 
 
