@@ -22,6 +22,7 @@ export default class Steps extends Component {
         ]),
         style: PropTypes.object,
         current: PropTypes.number,
+        secondaryCurrent: PropTypes.number,
     };
     static defaultProps = {
         prefixCls: 'rc-steps',
@@ -29,6 +30,7 @@ export default class Steps extends Component {
         direction: 'horizontal',
         labelPlacement: 'horizontal',
         current: 0,
+        secondaryCurrent: 0,
         status: 'process',
         size: '',
         progressDot: false,
@@ -86,12 +88,12 @@ export default class Steps extends Component {
                 this.setState({lastStepOffsetWidth});
             });
         }
-    }
+    };
 
     render() {
         const {
             prefixCls, style = {}, className, children, direction,
-            labelPlacement, iconPrefix, status, size, current, progressDot,
+            labelPlacement, iconPrefix, status, size, current, progressDot, secondaryCurrent,
             ...restProps,
         } = this.props;
         const {lastStepOffsetWidth, flexSupported} = this.state;
@@ -151,6 +153,12 @@ export default class Steps extends Component {
                                 childProps.status = 'wait';
                             }
                         }
+
+
+                        if (stepNumber === secondaryCurrent) {
+                            childProps.secondaryCurrent = true;
+                        }
+
                         return cloneElement(child, childProps);
                     })
                 }

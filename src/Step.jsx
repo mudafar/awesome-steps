@@ -25,14 +25,15 @@ export default class Step extends React.Component {
         ]),
         stepNumber: PropTypes.number,
         description: PropTypes.any,
-        outerTitle: PropTypes.any,
+        upperTitle: PropTypes.any,
         title: PropTypes.any,
         progressDot: PropTypes.oneOfType([
             PropTypes.bool,
             PropTypes.func,
         ]),
         tailContent: PropTypes.any,
-        subStep: PropTypes.bool
+        subStep: PropTypes.bool,
+        secondaryCurrent: PropTypes.bool,
     };
 
     renderIconNode() {
@@ -73,7 +74,7 @@ export default class Step extends React.Component {
             className, prefixCls, style, itemWidth,
             status = 'wait', iconPrefix, icon, wrapperStyle,
             adjustMarginRight, stepNumber,
-            description, title, upperTitle: outerTitle, progressDot, tailContent, subStep,
+            description, title, upperTitle: upperTitle, progressDot, tailContent, subStep, secondaryCurrent,
             ...restProps,
         } = this.props;
 
@@ -84,6 +85,7 @@ export default class Step extends React.Component {
             {
                 [`${prefixCls}-item-custom`]: icon,
                 [`${prefixCls}-item-sub-step`]: subStep,
+                [`${prefixCls}-item-secondary-current`]: secondaryCurrent,
             },
         );
         const stepItemStyle = {...style};
@@ -99,9 +101,9 @@ export default class Step extends React.Component {
                 className={classString}
                 style={stepItemStyle}
             >
-                <div className={`${prefixCls}-item-outer-content`}>
-                    {outerTitle &&
-                    <div className={`${prefixCls}-item-outer-title`}>{outerTitle}</div>}
+                <div className={`${prefixCls}-item-upper-content`}>
+                    {upperTitle &&
+                    <div className={`${prefixCls}-item-upper-title`}>{upperTitle}</div>}
                 </div>
                 <div className={`${prefixCls}-item-tail`}>
                     {tailContent}

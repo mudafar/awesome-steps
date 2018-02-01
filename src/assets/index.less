@@ -27,6 +27,38 @@
   &:last-child &-title:after {
     display: none;
   }
+
+  &-secondary-current {
+    .@{stepsPrefixClass}-item-upper-title {
+      &:after, &:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      &:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #FFF;
+        border-width: 8px;
+        margin-left: -9px;
+      }
+      &:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: #108ee9;
+        border-width: 11px;
+        margin-left: -12px;
+      }
+      background: transparent;
+      border: 2px solid #108ee9;
+      margin-bottom: -2px;
+      padding: 2px 10px 2px 10px;
+    }
+  }
+
   &-sub-step {
     .@{stepsPrefixClass}-item-icon {
       font-size: 0;
@@ -87,29 +119,29 @@
   &-content {
     margin-top: 3px;
   }
-  &-outer-content {
+  &-upper-content {
     display: block;
     text-align: center;
     margin-top: 8px;
     width: 100px;
     position: absolute;
-    top: -50px;
+    top: -55px;
   }
-  &-outer-title {
+  &-upper-title {
     font-size: 14px;
     margin-bottom: 4px;
     color: #666;
     font-weight: bold;
     display: inline-block;
     padding-right: 10px;
-    position: relative;
-    max-height: 40px;
+    //position: relative;
+    max-height: 30px;
     overflow: hidden;
     &:after {
       content: '';
       height: 1px;
       width: 1000px;
-      background: @wait-tail-color;
+      //background: @wait-tail-color;
       display: block;
       position: absolute;
       top: 0.55em;

@@ -1,8 +1,8 @@
 {
   "name": "awesome-steps",
-  "version": "1.0.12",
+  "version": "1.0.0",
   "description": "Boilerplate for publishing modern React modules with Rollup",
-  "author": "Travis Fischer",
+  "author": "Mudafar",
   "license": "MIT",
   "repository": {
     "type": "git",

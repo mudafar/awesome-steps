@@ -42,6 +42,7 @@ export default class App extends Component {
         return (
             <div>
                 <Steps current={this.state.current}
+                       secondaryCurrent={1}
                        labelPlacement={this.state.labelPlacement}
                        direction={this.state.direction}>
 
