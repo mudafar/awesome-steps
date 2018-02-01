@@ -4,12 +4,10 @@
 
 Based on [rc-steps]
 
-[![NPM version][npm-image]][npm-url] [![JavaScript Style Guide][js-style-image]][js-style-url]
+[![npm][npm-image]][npm-url] [![JavaScript Style Guide][js-style-image]][js-style-url]
 
-
-
-[npm-image]: http://img.shields.io/npm/v/awesome-steps?style=flat-square
-[npm-url]: http://npmjs.org/package/awesome-steps
+[npm-image]: https://img.shields.io/npm/v/npm.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/awesome-steps
 [js-style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [js-style-url]: https://standardjs.com
 [download-url]: https://npmjs.org/package/awesome-steps

@@ -20,7 +20,9 @@ export default {
     external: [
         'react',
         'react-dom',
-        'prop-types'
+        'prop-types',
+        'classnames',
+        'lodash.debounce'
     ],
     plugins: [
         less({
