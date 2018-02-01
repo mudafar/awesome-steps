@@ -1,7 +1,7 @@
 {
   "name": "awesome-steps",
   "version": "1.0.0",
-  "description": "Boilerplate for publishing modern React modules with Rollup",
+  "description": "React steps component",
   "author": "Mudafar",
   "license": "MIT",
   "repository": {
