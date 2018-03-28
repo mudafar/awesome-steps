@@ -41,6 +41,7 @@ export default class Steps extends Component {
         this.state = {
             flexSupported: true,
             lastStepOffsetWidth: 0,
+            upperContentHeight: 0,
         };
         this.calcStepOffsetWidth = debounce(this.calcStepOffsetWidth, 150);
     }
@@ -52,6 +53,8 @@ export default class Steps extends Component {
                 flexSupported: false,
             });
         }
+
+        this.calculateUpperContentMaxHeight();
     }
 
     componentDidUpdate() {
@@ -66,6 +69,19 @@ export default class Steps extends Component {
             this.calcStepOffsetWidth.cancel();
         }
     }
+
+    calculateUpperContentMaxHeight = () => {
+        if (this.domNode) {
+            const upperContentNodes = this.domNode.getElementsByClassName("rc-steps-item-upper-content");
+            if (upperContentNodes) {
+                const upperHeights = Array.from(upperContentNodes).map(el => el.clientHeight);
+                const upperContentHeight = Math.max(...upperHeights);
+                this.setState({upperContentHeight});
+                console.log("Max: ", upperContentHeight);
+            }
+        }
+    };
+
 
     calcStepOffsetWidth = () => {
         if (isFlexSupported()) {
@@ -107,15 +123,18 @@ export default class Steps extends Component {
         });
         let lastStepNumber = 0;
         let lastSubStepNumber = 0;
+        const marginStyle = direction === 'horizontal' && labelPlacement === 'vertical'
+            ? {marginTop: this.state.upperContentHeight + 15}
+            : {};
 
         return (
-            <div className={classString} style={style} {...restProps}>
+            <div className={classString} style={{...marginStyle, ...style}} {...restProps}
+                 ref={element => this.domNode = element}>
                 {
                     Children.map(filteredChildren, (child, index) => {
                         if (!child) {
                             return null;
                         }
-                        // debugger
                         if (!child.props.subStep) {
                             lastStepNumber++;
                             lastSubStepNumber = lastStepNumber;
@@ -129,6 +148,7 @@ export default class Steps extends Component {
                             iconPrefix,
                             wrapperStyle: style,
                             progressDot,
+
                             ...child.props,
                         };
                         if (!flexSupported && direction !== 'vertical' && index !== lastIndex) {
@@ -138,6 +158,10 @@ export default class Steps extends Component {
                         // fix tail color
                         if (status === 'error' && index === current - 1) {
                             childProps.className = `${prefixCls}-next-error`;
+                        }
+
+                        if (direction === 'horizontal' && labelPlacement === 'vertical') {
+                            childProps.showUpperContent = true;
                         }
 
                         let stepNumber = child.props.subStep ? lastSubStepNumber - 1 : lastStepNumber - 1;

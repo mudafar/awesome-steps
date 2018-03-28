@@ -74,8 +74,8 @@ export default class Step extends React.Component {
             className, prefixCls, style, itemWidth,
             status = 'wait', iconPrefix, icon, wrapperStyle,
             adjustMarginRight, stepNumber,
-            description, title, upperTitle: upperTitle, progressDot, tailContent, subStep, secondaryCurrent,
-            ...restProps,
+            description, title, upperTitle: upperTitle, progressDot,
+            tailContent, subStep, secondaryCurrent, showUpperContent, ...restProps,
         } = this.props;
 
         const classString = classNames(
@@ -101,10 +101,12 @@ export default class Step extends React.Component {
                 className={classString}
                 style={stepItemStyle}
             >
-                <div className={`${prefixCls}-item-upper-content`}>
-                    {upperTitle &&
-                    <div className={`${prefixCls}-item-upper-title`}>{upperTitle}</div>}
-                </div>
+                {showUpperContent && (
+                    <div className={`${prefixCls}-item-upper-content`}>
+                        {upperTitle &&
+                        <div className={`${prefixCls}-item-upper-title`}>{upperTitle}</div>}
+                    </div>
+                )}
                 <div className={`${prefixCls}-item-tail`}>
                     {tailContent}
                 </div>

@@ -5,7 +5,7 @@
   width: 100%;
   line-height: 1.5;
   display: flex;
-  padding-top: 50px;
+  //padding-top: 50px;
   &,
   * {
     box-sizing: border-box;
@@ -29,7 +29,8 @@
   }
 
   &-secondary-current {
-    .@{stepsPrefixClass}-item-upper-title {
+    .@{stepsPrefixClass}-item-upper-content {
+      border: 2px solid #108ee9;
       &:after, &:before {
         top: 100%;
         left: 50%;
@@ -52,10 +53,10 @@
         border-width: 11px;
         margin-left: -12px;
       }
+    }
+    .@{stepsPrefixClass}-item-upper-title {
       background: transparent;
-      border: 2px solid #108ee9;
       margin-bottom: -2px;
-      padding: 2px 10px 2px 10px;
     }
   }
 
@@ -120,23 +121,14 @@
     margin-top: 3px;
   }
   &-upper-content {
-    display: block;
+    display: inline-block;
     text-align: center;
     margin-top: 8px;
     width: 100px;
     position: absolute;
-    top: -55px;
-  }
-  &-upper-title {
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #666;
-    font-weight: bold;
-    display: inline-block;
-    padding-right: 10px;
-    //position: relative;
-    max-height: 30px;
-    overflow: hidden;
+    //top: -55px;
+    bottom: 92px;
+
     &:after {
       content: '';
       height: 1px;
@@ -147,6 +139,20 @@
       top: 0.55em;
       left: 100%;
     }
+
+  }
+  &-upper-title {
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+    display: inline-block;
+    padding: 3px 4px 3px 4px;
+    overflow: hidden;
+    //position: relative;
+    //max-height: 30px;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+    //max-width: 85px;
   }
 
   &-title {
