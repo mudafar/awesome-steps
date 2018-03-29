@@ -75,7 +75,7 @@ export default class Step extends React.Component {
             status = 'wait', iconPrefix, icon, wrapperStyle,
             adjustMarginRight, stepNumber,
             description, title, upperTitle: upperTitle, progressDot,
-            tailContent, subStep, secondaryCurrent, showUpperContent, ...restProps,
+            tailContent, subStep, secondaryCurrent, showUpperContent, upperContentHeight, ...restProps,
         } = this.props;
 
         const classString = classNames(
@@ -95,18 +95,15 @@ export default class Step extends React.Component {
         if (adjustMarginRight) {
             stepItemStyle.marginRight = adjustMarginRight;
         }
+
+        const upperTopStyle = upperContentHeight > 0 ? {top: -(upperContentHeight + 22)} : {};
+
         return (
             <div
                 {...restProps}
                 className={classString}
                 style={stepItemStyle}
             >
-                {showUpperContent && (
-                    <div className={`${prefixCls}-item-upper-content`}>
-                        {upperTitle &&
-                        <div className={`${prefixCls}-item-upper-title`}>{upperTitle}</div>}
-                    </div>
-                )}
                 <div className={`${prefixCls}-item-tail`}>
                     {tailContent}
                 </div>
@@ -119,6 +116,12 @@ export default class Step extends React.Component {
                     </div>
                     {description && <div className={`${prefixCls}-item-description`}>{description}</div>}
                 </div>
+                {showUpperContent && (
+                    <div className={`${prefixCls}-item-upper-content`} style={upperTopStyle}>
+                        {upperTitle &&
+                        <div className={`${prefixCls}-item-upper-title`}>{upperTitle}</div>}
+                    </div>
+                )}
             </div>
         );
     }

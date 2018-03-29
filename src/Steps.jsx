@@ -30,7 +30,7 @@ export default class Steps extends Component {
         direction: 'horizontal',
         labelPlacement: 'horizontal',
         current: 0,
-        secondaryCurrent: 0,
+        secondaryCurrent: undefined,
         status: 'process',
         size: '',
         progressDot: false,
@@ -148,7 +148,7 @@ export default class Steps extends Component {
                             iconPrefix,
                             wrapperStyle: style,
                             progressDot,
-
+                            upperContentHeight: this.state.upperContentHeight,
                             ...child.props,
                         };
                         if (!flexSupported && direction !== 'vertical' && index !== lastIndex) {
@@ -179,7 +179,7 @@ export default class Steps extends Component {
                         }
 
 
-                        if (stepNumber === secondaryCurrent) {
+                        if (stepNumber === secondaryCurrent && childProps.upperTitle && childProps.upperTitle.length) {
                             childProps.secondaryCurrent = true;
                         }
 
