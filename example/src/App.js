@@ -8,84 +8,114 @@ export default class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {current: 0, labelPlacement: "vertical", direction: "horizontal"};
+        this.state = {
+            current: 0,
+            secondaryCurrent: 0,
+            labelPlacement: "vertical",
+            direction: "horizontal",
+            secondaryCurrentActive: false,
+        };
 
     }
 
 
     handleStepClick = (stepNumber) => {
-        this.setState({current: stepNumber})
-    };
 
-    setHorizontalLabelPlacement = () => {
-        this.setState({labelPlacement: "horizontal"})
-
-    };
-
-    setVerticalLabelPlacement = () => {
-        this.setState({labelPlacement: "vertical"})
-
+        if (this.state.secondaryCurrentActive) {
+            this.setState({secondaryCurrent: stepNumber})
+        } else  {
+            this.setState({current: stepNumber})
+        }
     };
 
 
-    setVerticalDirection = () => {
-        this.setState({direction: "vertical"})
+    toggleSecondaryCurrent = () => {
+        this.setState({secondaryCurrentActive: !this.state.secondaryCurrentActive})
+    };
+
+    toggleDirection = () => {
+        const direction = this.state.direction === 'horizontal' ? 'vertical' : 'horizontal';
+        this.setState({direction})
 
     };
 
-    setHorizontalDirection = () => {
-        this.setState({direction: "horizontal"})
+    toggleLabelPlacement = () => {
+        const labelPlacement = this.state.labelPlacement === 'horizontal' ? 'vertical' : 'horizontal';
+        this.setState({labelPlacement})
 
     };
+
 
     render() {
         return (
-            <div>
+            <div className="center react-component">
                 <Steps current={this.state.current}
-                       secondaryCurrent={1}
+                       secondaryCurrent={this.state.secondaryCurrent}
                        labelPlacement={this.state.labelPlacement}
                        direction={this.state.direction}>
 
-                    <Steps.Step title="first" description="description" upperTitle="Upper title"
-                                onClick={() => this.handleStepClick(0)}/>
-                    <Steps.Step title="sub"
+                    <Steps.Step title="First"
+                                description="Large description can be placed here..."
+                                upperTitle="Upper title 1"
+                                onClick={() => this.handleStepClick(0)}
+                    />
+                    <Steps.Step title="Sub1"
                                 onClick={() => this.handleStepClick(0.01)}
                                 subStep
                     />
-                    <Steps.Step title="sub"
+                    <Steps.Step title="Sub2"
                                 onClick={() => this.handleStepClick(0.02)}
                                 subStep
                     />
-                    <Steps.Step title="second" description="description" upperTitle="Upper title "
-                                onClick={() => this.handleStepClick(1)}/>
-                    <Steps.Step title="third" description="description" upperTitle="Upper title "
-                                onClick={() => this.handleStepClick(2)}/>
-                    <Steps.Step title="sub"
+                    <Steps.Step title="Second"
+                                description="Description"
+                                upperTitle="Upper title 2"
+                                onClick={() => this.handleStepClick(1)}
+                    />
+                    <Steps.Step title="Third"
+                                description="Description"
+                                upperTitle="Upper title 3"
+                                onClick={() => this.handleStepClick(2)}
+                    />
+                    <Steps.Step title="Sub3"
                                 onClick={() => this.handleStepClick(2.01)}
                                 subStep
                     />
-                    <Steps.Step title="sub"
-                                onClick={() => this.handleStepClick(2.02)}
-                                subStep
+                    <Steps.Step title="Fourth"
+                                description="Description"
+                                onClick={() => this.handleStepClick(3)}
                     />
-                    <Steps.Step title="fourth" description="description"
-                                onClick={() => this.handleStepClick(3)}/>
-                    <Steps.Step title="sub"
+                    <Steps.Step title="Sub4"
                                 onClick={() => this.handleStepClick(3.01)}
                                 subStep
                     />
                 </Steps>
 
 
-                <br/><br/><br/><br/>
+                <br/><br/><br/>
 
-                <button onClick={this.setHorizontalLabelPlacement}>Horizontal label</button>
+
+                Horizontal label: <input
+                name="horizontalLabel"
+                type="checkbox"
+                checked={this.state.labelPlacement === "horizontal"}
+                onChange={this.toggleLabelPlacement} />
+
                 <br/><br/>
-                <button onClick={this.setVerticalLabelPlacement}>Vertical label</button>
+
+                Vertical direction: <input
+                name="VerticalDirection"
+                type="checkbox"
+                checked={this.state.direction === "vertical"}
+                onChange={this.toggleDirection} />
+
                 <br/><br/>
-                <button onClick={this.setHorizontalDirection}>Horizontal direction</button>
-                <br/><br/>
-                <button onClick={this.setVerticalDirection}>Vertical direction</button>
+
+                Secondary click: <input
+                    name="secondaryCurrent"
+                    type="checkbox"
+                    checked={this.state.secondaryCurrentActive}
+                    onChange={this.toggleSecondaryCurrent} />
 
 
             </div>

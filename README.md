@@ -1,10 +1,20 @@
-# awesome-steps
+# awesome-steps [![npm][npm-image]][npm-url] [![JavaScript Style Guide][js-style-image]][js-style-url]
 
-> React steps component
+
+> The most advanced yet awesome React steps component
+
+![Alt Text](https://raw.githubusercontent.com/mudafar/awesome-steps/master/example/awesome_steps.gif)
+
 
 Based on [rc-steps]
 
-[![npm][npm-image]][npm-url] [![JavaScript Style Guide][js-style-image]][js-style-url]
+## Features
+
+- Horizontal and vertical direction.
+- Horizontal and vertical label placement .
+- Step with `icon`, `status`, `number`, `title`, `upperTitle` and/or `description`.
+- Settable `current` and `secondaryCurrent` (upper title) active step. 
+
 
 [npm-image]: https://img.shields.io/npm/v/npm.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/awesome-steps
@@ -19,20 +29,22 @@ Online example: https://mudafar.github.io/awesome-steps/
 
 
 
-## Install
-
-
-```bash
-npm install --save awesome-steps
-```
-or 
-
+## Installation
 
 ```bash
 yarn add awesome-steps
 ```
 
-## Basic usage
+or
+
+```bash
+npm install --save awesome-steps
+```
+ 
+
+
+## Usage
+### Basic
 
 ```jsx
 import React, {Component} from 'react'
@@ -53,6 +65,60 @@ export default class App extends Component {
     }
 }
 ```
+
+
+
+### Advanced
+
+```jsx
+import React, {Component} from 'react'
+
+import Steps from 'awesome-steps'
+import 'awesome-steps/dist/style.css'
+
+export default class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {current: 0};
+    }
+
+
+    render() {
+        return (
+            <Steps  current={this.state.current}
+                    labelPlacement={"horizontal"}
+                    direction={"horizontal"}
+            >
+              <Steps.Step   title="first"
+                            onClick={() => this.handleStepClick(0)} 
+              />
+              <Steps.Step   title="second"
+                            onClick={() => this.handleStepClick(1)} 
+              />
+              <Steps.Step title="Sub2"
+                          onClick={() => this.handleStepClick(1.01)}
+                          subStep
+              />              
+              <Steps.Step   title="third"
+                            onClick={() => this.handleStepClick(2)} 
+              />
+            </Steps>
+        )
+    }
+    
+    
+    handleStepClick = (stepNumber) => {
+        this.setState({current: stepNumber})
+    };
+    
+}
+```
+
+
+
+
 
 ## API
 ### Steps props:
@@ -76,7 +142,9 @@ export default class App extends Component {
       <td>current</td>
       <td>number</td>
       <td>0</td>
-      <td>Index of current step.</td>
+      <td>Index of current step (integer value).
+          For subStep increment the index by 0.01 (see the advanced usage).
+      </td>
     </tr>
     <tr>
       <td>secondaryCurrent</td>
@@ -157,7 +225,16 @@ export default class App extends Component {
 </table>
 
 
+## Style
+### Class structure
+- `<Steps/>`: rc-steps rc-steps-`[direction]` rc-steps-label-`[direction]`
+- `<Step/>`: rc-steps-item rc-steps-item-`[status]` [rc-steps-item-secondary-current] [rc-steps-item-sub-step]
+    * rc-steps-item-tail
+    * rc-steps-item-icon
+    * rc-steps-item-content
+    * rc-steps-item-upper-content
 
+`[direction]` and `[status]` use the same values from the API.
 
 ## Development
 
